@@ -1051,6 +1051,10 @@ export const Items: { [k: string]: ModdedItemData; } = {
 			if (pokemon.baseSpecies.baseSpecies === 'Clawitzer') return this.chainModify(1.5);
 		},
 		shortDesc: "Pulse damage is x1.2. If Clawitzer: becomes Water/Dragon, Speed is 1.5x.",
+		onTakeItem(item, source) {
+			if (pokemon.baseSpecies.baseSpecies === 'Clawitzer') return false;
+			return true;
+		},
 		num: -14,
 		rating: 3,
 	},
