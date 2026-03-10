@@ -691,7 +691,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		shortDesc: "Grassy Terrain active or Booster Energy used: highest stat is 1.3x, or 1.5x if Speed.",
 	},
 	corruptdata: {
-		onDamagingHit(damage, target, source, move) {
+		onDamagingHit(damage, target, source, move, pokemon) {
 			if (this.checkMoveMakesContact(move, source, target)) {
 				source.setType("???");
 				this.add('-start', pokemon, 'typechange', "???", '[from] ability: Corrupt Data');
