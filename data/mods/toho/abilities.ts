@@ -587,8 +587,13 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		shortDesc: "Attacks deal 1.5x damage against Dragon-Types.",
 	},
 	bloodsucker: {
-		onAfterMoveSecondarySelf(pokemon, target, move) {
-			if (move.flags['contact'] && (!target || target.fainted || target.hp <= 0)) pokemon.heal(pokemon.baseMaxhp / 3);
+		// onAfterMoveSecondarySelf(pokemon, target, move) {
+		// 	if (move.flags['contact'] && (!target || target.fainted || target.hp <= 0)) pokemon.heal(pokemon.baseMaxhp / 3);
+		// },
+		onSourceAfterFaint(target, source, effect, pokemon) {
+			if (effect && effect.effectType === 'Move') {
+				if (pokemon.lastMoveUsed.flags['contact']) pokemon.heal(pokemon.baseMaxhp / 3);
+			}
 		},
 		flags: {},
 		name: "Bloodsucker",
